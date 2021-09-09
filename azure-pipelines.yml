@@ -77,6 +77,6 @@ steps:
     azureSubscription: 'theserviceconnection'
     appType: 'webAppLinux'
     appName: 'atestbyk'
-    package: '$(Build.ArtifactStagingDirectory)/drop/Application$(Build.BuildId).zip'
+    package: $(Build.ArtifactStagingDirectory)/Application$(Build.BuildId).zip
     runtimeStack: 'PYTHON|3.6'
     startUpCommand: 'python3.6 manage.py migrate'
