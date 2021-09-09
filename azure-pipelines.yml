@@ -66,11 +66,12 @@ steps:
   displayName: 'Upload package'
   artifact: drop
  
+
 - task: AzureWebApp@1
   inputs:
     azureSubscription: 'theserviceconnection'
     appType: 'webAppLinux'
     appName: 'atestbyk'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    package: '$(Pipeline.Workspace)/drop/$(Build.BuildId).zip'
     runtimeStack: 'PYTHON|3.6'
     startUpCommand: 'python3.6 manage.py migrate'
