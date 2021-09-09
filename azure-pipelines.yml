@@ -65,7 +65,13 @@ steps:
 - publish: $(Build.ArtifactStagingDirectory)/Application$(Build.BuildId).zip
   displayName: 'Upload package'
   artifact: drop
- 
+
+- task: DownloadPipelineArtifact@2
+  inputs:
+    buildType: 'current'
+    artifactName: 'Application$(Build.BuildId).zip'
+    targetPath: '$(Pipeline.Workspace)/drop'
+    
 - task: AzureWebApp@1
   inputs:
     azureSubscription: 'theserviceconnection'
